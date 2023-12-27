@@ -44,7 +44,7 @@ void timer() __interrupt(1){
 	if(upCopy >= 0){
 		saida = 0;
 		upCopy--;
-	} else {
+	} else if(downCopy >= 0) {
 		saida = 1;
 		downCopy--;
 	}

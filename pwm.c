@@ -10,11 +10,11 @@ int up, upCopy, down, downCopy = 2;
 char flag = 0;
 
 void freqU(){
-	if(t2 <= 0xFD && t1 != 0xff){
-		t2 += 0x2;
+	if(t2 <= 0xFE && t1 != 0xff){
+		t2 += 0x1;
 	} else if (t1 < 0xFF) {
 		t1 += 0x1;
-		t2 = 0x2 - (0xFF - t2);
+		t2 = 0x0;
 	}
 	
 	TH0 = t1;
@@ -22,11 +22,11 @@ void freqU(){
 }
 
 void freqD() {
-	if(t2 >= 0x2 && t1 != 0x0){
-		t2 -= 0x2;
+	if(t2 >= 0x1 && t1 != 0x0){
+		t2 -= 0x1;
 	} else if (t1 > 0x0){
 		t1 -= 0x1;
-		t2 = 0xFF - (0x2 - t2);
+		t2 = 0xFF;
 	}
 
 	TH0 = t1;

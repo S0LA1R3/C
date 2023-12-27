@@ -5,16 +5,16 @@
 #define FD P1_1
 
 int t1 = 0xFF;
-int t2 = 0xFA;
-int up, upCopy, down, downCopy = 4;
+int t2 = 0xFD;
+int up, upCopy, down, downCopy = 2;
 char flag = 0;
 
 void freqU(){
-	if(t2 <= 0xFA){
-		t2 += 0x5;
+	if(t2 <= 0xFD){
+		t2 += 0x2;
 	} else if (t1 < 0xFF){
 		t1 += 0x1;
-		t2 = 0x5 - (0xFF - t2);
+		t2 = 0x2 - (0xFF - t2);
 	} else {
 		t1, t2 = 0xFF;
 	}
@@ -24,11 +24,11 @@ void freqU(){
 }
 
 void freqD() {
-	if(t2 >= 0x5){
-		t2 -= 0x5;
+	if(t2 >= 0x2){
+		t2 -= 0x2;
 	} else if (t1 > 0x0){
 		t1 -= 0x1;
-		t2 = 0xFF - (0x5 - t2);
+		t2 = 0xFF - (0x2 - t2);
 	} else {
 		t1, t2 = 0x0;
 	}
@@ -63,7 +63,7 @@ void timer() __interrupt(1){
 			up--;
 			down++;
 
-			if(down < 0){
+			if(up < 0){
 				flag = 0;
 				down--;
 				up++;

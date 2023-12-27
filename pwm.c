@@ -28,9 +28,11 @@ void freqU(){
 void freqD() {
 	if(t2 >= 0x1 && t1 != 0x0){
 		t2 -= 0x1;
+		freq++;
 	} else if (t1 > 0x0){
 		t1 -= 0x1;
 		t2 = 0xFF;
+		freq++;
 	}
 
 	TH0 = t1;
@@ -97,7 +99,7 @@ void main(){
 		Lcd4_Set_Cursor(1, 1);
                 Lcd4_Write_String("Frequency: ");
                 Lcd4_Set_Cursor(2, 1);
-                Lcd4_Write_Char(1/freq + 0x30);
+                Lcd4_Write_Char((float)1/freq + 0x30);
                 Lcd4_Write_Char(' Hz\0');
 	}
 }
